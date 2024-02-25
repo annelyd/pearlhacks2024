@@ -5,6 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
     <title>Document</title>
+    <style>
+        /* Always set the map height explicitly to define the size of the div
+         * element that contains the map. */
+        #map {
+          height: 100%;
+        }
+        /* Optional: Makes the sample page fill the window. */
+        html, body {
+          height: 100%;
+          margin: 0;
+          padding: 0;
+        }
+      </style>
 </head>
 <body>
     <header>
@@ -15,5 +28,33 @@
             <div><a>FLOCATE UPDATE</a></div>
         </div>
     </header>
+
+    <div id="map"></div>
+    <script>
+      var UNC_Chapel_Hill;
+      function initMap() {
+        var remove_default_markers =[{
+            featureType: "poi",
+            elementType: "labels",
+            stylers: [
+                { visibility: "off" }
+            ]
+        }];
+
+        UNC_Chapel_Hill = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: 35.9097, lng: -79.0483},
+          zoom: 17,
+          styles: remove_default_markers
+        });
+
+        var Davis = new google.maps.Marker({
+            position: {lat: 35.911048, lng: -79.048055},
+            map: UNC_Chapel_Hill,
+            title: 'Davis Library'
+        });
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmYj7c-a_her9GlIewQTZDJBJWSiCJ0ao&callback=initMap"
+    async defer></script>
 </body>
 </html>
