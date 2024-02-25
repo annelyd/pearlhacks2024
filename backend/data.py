@@ -22,6 +22,7 @@ class Data:
         Union.addBathroom(near_alpine)
         Union.addBathroom(auditorium)
         Union.addBathroom(bottom_floor)
+        self.addBuilding(Union)
 
         # Populating Campus Y Bathroom Data
         CampusY = Building("Campus Y", 35.9114, -79.0512)
@@ -29,8 +30,12 @@ class Data:
         second_floor = Bathroom("Second Floor", True, True, False, False, True, False, False)
         CampusY.addBathroom(meantime)
         CampusY.addBathroom(second_floor)
-        
-        self.addBuilding(Union)
         self.addBuilding(CampusY)
+
+        # Populating Davis Library Bathroom Data
+        # DavisLibrary = Building("Davis Library", 35.911048, -79.048055)
+        # first_floor = Bathroom("First Floor", False, False, False, True, True, True, False)
+        # DavisLibrary.addBathroom(first_floor)
+        # self.addBuilding(DavisLibrary)
 
         return self.buildings
