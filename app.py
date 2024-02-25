@@ -6,11 +6,11 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
-@app.route('/flocate')
+@app.route('/flocator')
 def flocator():
     return render_template('flocator.html')
 
-@app.route('/flocate')
+@app.route('/update')
 def update():
     return render_template('update.html')
 
