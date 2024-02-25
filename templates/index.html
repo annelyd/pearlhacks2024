@@ -13,9 +13,9 @@
 <header>
     <div><img src="/static/image/uterus.png" alt="A picture of our Icon"></div>
     <div class="nav">
-        <div class="item"><a href="#"><p class="nav-text">Home</p></a></div>
-        <div class="item"><a href="#"><p class="nav-text">Flocator</p></a></div>
-        <div class="item"><a href="#"><p class="nav-text">Flocate Update</p></a></div>
+        <div class="item"><a href="{{ url_for('index') }}"><p class="nav-text">Home</p></a></div>
+        <div class="item"><a href="{{ url_for('flocator') }}"><p class="nav-text">Flocator</p></a></div>
+        <div class="item"><a href="{{ url_for('update') }}"><p class="nav-text">Flocate Update</p></a></div>
     </div>
 </header>
 <div class="hero">
