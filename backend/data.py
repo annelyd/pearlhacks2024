@@ -13,7 +13,7 @@ class Data:
 
     def getDummyData(self):
         # Populating Student Union Bathroom Data
-        Union = Building("Student Union", 35.9097, -79.0483)
+        Union = Building("Student Union", 35.9102, -79.0476)
         third_floor = Bathroom("Third Floor", True, True, False, False, True, False, False)
         near_alpine = Bathroom("Across from Alpine", True, False, False, False, True, False, True)
         auditorium = Bathroom("Near Auditorium", True, True, False, True, True, False, False)
