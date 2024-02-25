@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/static/stylesheets/styles.css">
 
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmYj7c-a_her9GlIewQTZDJBJWSiCJ0ao&callback=initMap"
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmYj7c-a_her9GlIewQTZDJBJWSiCJ0ao&loading=async&callback=initMap"
     async defer></script>
     <title>Menstruation Station</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -54,26 +54,25 @@
           zoom: 17,
           styles: remove_default_markers
         });
-    
+
         var buildings = JSON.parse('{{ buildings | tojson | safe }}');
         buildings.forEach(function(building) {
           var marker = new google.maps.Marker({
             position: {lat: building.lat, lng: building.long},
             map: UNC_Chapel_Hill,
-            title: building.name
+            title: building.name,
           });
           
           var building_info = '<h3 class = "building-name">' + building.name + '</h3><ul>';
           building.bathrooms.forEach(function(bathroom) {
             building_info += '<h5 class = "bathroom-name">' + bathroom.name + ': <h5>';
-            building_info += '<li> has '
-            building_info += bathroom.pads ? 'pads ' : '';
-            building_info += bathroom.tampons ? 'tampons ' : '';
-            building_info += bathroom.pad_running_low ? 'Pads running low ' : '';
-            building_info += bathroom.tampon_running_low ? 'Tampons running low ' : '';
-            building_info += bathroom.pad_restock ? 'Pads need restock ' : '';
-            building_info += bathroom.tampon_restock ? 'Tampons need restock ' : '';
-            building_info += '</li><br>';
+            building_info += bathroom.pads & !bathroom.pad_running_low & !bathroom.pad_restock ? '<li>has pads</li>' : '';
+            building_info += bathroom.tampons & !bathroom.tampon_running_low & !bathroom.tampon_restock ? '<li>has tampons</li>' : '';
+            building_info += bathroom.pad_running_low ? '<li>Pads running low</li>' : '';
+            building_info += bathroom.tampon_running_low ? '<li>Tampons running low</li>' : '';
+            building_info += bathroom.pad_restock ? '<li>Pads need restock</li>' : '';
+            building_info += bathroom.tampon_restock ? '<li>Tampons need restock</li>' : '';
+            building_info += '<br>';
           });
           building_info += '</ul>';
     
