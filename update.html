@@ -10,10 +10,29 @@
     <header>
         <div><img src="image/uterus.png" alt="A picture of our Icon"></div>
         <div class="nav">
-            <div><a>HOME</a></div>
-            <div><a>FLOCATOR</a></div>
-            <div><a>FLOCATE UPDATE</a></div>
+            <div class="item"><a href="#">HOME</a></div>
+            <div class="item"><a href="#">FLOCATOR</a></div>
+            <div class="item"><a href="#">FLOCATE UPDATE</a></div>
         </div>
     </header>
+    <div class="form-select">
+        <button class="btn-select", onclick="showUpdateForm()">Update Hygiene Product Availability </button>
+        <button class="btn-select", onclick="showRestockForm()">Report a Need For a Restock </button>
+    </div>
+    <script type="text/javascript">
+        function showUpdateForm() {
+            document.getElementById('updateForm').style.display = 'block';
+        }
+        function showRestockForm() {
+            document.getElementById('restockForm').style.display = 'block';
+        }
+    </script>
+    
+    <div class="form", id="updateForm">
+        <p> hi</p>
+    </div>
+    <div class="form", id="restockForm"> 
+        <p> test</p>
+    </div>
 </body>
 </html>
