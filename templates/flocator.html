@@ -4,18 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/static/stylesheets/styles.css">
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmYj7c-a_her9GlIewQTZDJBJWSiCJ0ao&callback=initMap"
+    async defer></script>
     <title>Menstruation Station</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+
     <style>
-        /* Always set the map height explicitly to define the size of the div
-         * element that contains the map. */
         #map {
-          height: 100%;
+          height: 90%;
+          width: 90%;
+          margin-left: auto; 
+          margin-right: auto;
         }
-        /* Optional: Makes the sample page fill the window. */
         html, body {
           height: 100%;
           margin: 0;
@@ -37,28 +41,51 @@
     <script>
       var UNC_Chapel_Hill;
       function initMap() {
-        var remove_default_markers =[{
-            featureType: "poi",
-            elementType: "labels",
-            stylers: [
-                { visibility: "off" }
-            ]
+        var remove_default_markers = [{
+          featureType: "poi",
+          elementType: "labels",
+          stylers: [
+            { visibility: "off" }
+          ]
         }];
-
+    
         UNC_Chapel_Hill = new google.maps.Map(document.getElementById('map'), {
           center: {lat: 35.9097, lng: -79.0483},
           zoom: 17,
           styles: remove_default_markers
         });
-
-        var Davis = new google.maps.Marker({
-            position: {lat: 35.911048, lng: -79.048055},
+    
+        var buildings = JSON.parse('{{ buildings | tojson | safe }}');
+        buildings.forEach(function(building) {
+          var marker = new google.maps.Marker({
+            position: {lat: building.lat, lng: building.long},
             map: UNC_Chapel_Hill,
-            title: 'Davis Library'
+            title: building.name
+          });
+          
+          var building_info = '<h3 class = "building-name">' + building.name + '</h3><ul>';
+          building.bathrooms.forEach(function(bathroom) {
+            building_info += '<h5 class = "bathroom-name">' + bathroom.name + ': <h5>';
+            building_info += '<li> has '
+            building_info += bathroom.pads ? 'pads ' : '';
+            building_info += bathroom.tampons ? 'tampons ' : '';
+            building_info += bathroom.pad_running_low ? 'Pads running low ' : '';
+            building_info += bathroom.tampon_running_low ? 'Tampons running low ' : '';
+            building_info += bathroom.pad_restock ? 'Pads need restock ' : '';
+            building_info += bathroom.tampon_restock ? 'Tampons need restock ' : '';
+            building_info += '</li><br>';
+          });
+          building_info += '</ul>';
+    
+          var infoWindow = new google.maps.InfoWindow({
+            content: building_info
+          });
+    
+          marker.addListener('click', function() {
+            infoWindow.open(UNC_Chapel_Hill, marker);
+          });
         });
       }
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmYj7c-a_her9GlIewQTZDJBJWSiCJ0ao&callback=initMap"
-    async defer></script>
 </body>
 </html>

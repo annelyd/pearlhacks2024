@@ -241,6 +241,20 @@ form p {
     text-align: center;
 }
 
+.form-select {
+    position: relative;
+    padding: 70px 0;
+    align-content: center;
+    padding-left: 30%; 
+}
+
+.building-name {
+    color: #da9cac;
+}
+
+.bathroom-name {
+    color:  #990200;
 select {
     width: 50%;
+
 }

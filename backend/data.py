@@ -1,9 +1,9 @@
-from bathroom import Bathroom
-from building import Building
+from backend.bathroom import Bathroom
+from backend.building import Building
 
 class Data:
-    def __init__(self, buildings = []):
-        self.buildings = buildings
+    def __init__(self):
+        self.buildings = []
     
     def addBuilding(self, building: Building):
         self.buildings.append(building)

@@ -1,11 +1,11 @@
-from bathroom import Bathroom
+from backend.bathroom import Bathroom
 
 class Building:
-    def __init__(self, name, lat, long, bathrooms = []):
+    def __init__(self, name, lat, long):
         self.name = name
         self.lat = lat
         self.long = long
-        self.bathrooms = bathrooms
+        self.bathrooms = []
     
     def getName(self):
         return self.name
