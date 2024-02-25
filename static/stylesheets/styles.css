@@ -204,5 +204,43 @@ a:hover {
 }
 
 .form {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 3rem;
+}
+
+.updateForm {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 65%;
+    background-color: #f2cdce;
+    padding: 3rem;
+    border-radius: 0 25px 0 25px;
+}
+
+li {
+    list-style-type: none;
+}
+
+input {
+    padding: .25rem 2rem .25rem 2rem;
+    background-color: #990200;
+    color: white;
+    border-radius: 5px;
+    font-family: "Josefin Sans", sans-serif;
+}
+
+label {
     display: inline-block;
+    text-align: left;
+}
+
+form p {
+    text-align: center;
+}
+
+select {
+    width: 50%;
 }
