@@ -176,3 +176,11 @@ a:hover {
     align-content: center;
     padding-left: 30%; 
 }
+
+.building-name {
+    color: #da9cac;
+}
+
+.bathroom-name {
+    color:  #990200;
+}
