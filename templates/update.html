@@ -15,24 +15,39 @@
             <div class="item"><a href="{{ url_for('update') }}"><p class="nav-text">Flocate Update</p></a></div>
         </div>
     </header>
-    <div class="form-select">
-        <button class="btn-select", onclick="showUpdateForm()">Update Hygiene Product Availability </button>
-        <button class="btn-select", onclick="showRestockForm()">Report a Need For a Restock </button>
-    </div>
-    <script type="text/javascript">
-        function showUpdateForm() {
-            document.getElementById('updateForm').style.display = 'block';
-        }
-        function showRestockForm() {
-            document.getElementById('restockForm').style.display = 'block';
-        }
-    </script>
-
-    <div class="form", id="updateForm">
-        <p> hi</p>
-    </div>
-    <div class="form", id="restockForm"> 
-        <p> test</p>
+    
+    <div class="form">
+        <form id="updateForm">
+            <p> Thank you for helping keep the Flocator updated!</p>
+            <label> Select a Location: </label>
+            <select>
+                <optgroup label="Carolina Union">
+                    <option value="Women's Restroom on Third Floor ">Women's Restroom on Third Floor </option>
+                    <option value="Women's Restroom near Alpine">Women's Restroom near Alpine</option>
+                    <option value="Women's Restroom on Bottom Floor">Women's Restroom on Bottom Floor</option>
+                    <option value="Women's Restroom near Union Auditorium">Women's Restroom near Union Auditorium</option>
+                  </optgroup>
+                  <optgroup label="Campus Y">
+                    <option value="Gender Neutral Restrooms near Meantime">Gender Neutral Restrooms near Meantime</option>
+                    <option value="Gender Neutral Restrooms on Second Floor">Gender Neutral Restrooms on Second Floor</option>
+                  </optgroup>
+            </select>
+            <ul>
+                <li> Is this location completely out of stock of hygiene products? </li>
+                <li><input type = "checkbox" name = "Restock" value = "Restock" /> Yes, a restock is needed</li>
+             </ul>
+            <ul>
+                <li> Select which menstrual hygiene products you were able to find: </li>
+                <li><input type = "checkbox" name = "Tampons" value = "Tampons" /> Tampons</li>
+                <li><input type = "checkbox" name = "Pads" value = "Pads" /> Pads</li>
+             </ul>
+             <ul>
+                <li> Is this location running low on hygiene products? </li>
+                <li><input type = "checkbox" name = "tampon_running_low" value = "tampon_running_low" /> Running low on tampons </li>
+                <li><input type = "checkbox" name = "pad_running_low" value = "pad_running_low" /> Running low on pads </li>
+             </ul>
+             <input type="submit" value="Submit">
+        </form>
     </div>
 </body>
 </html>
